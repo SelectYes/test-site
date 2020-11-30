@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+
+        /*    .separator {
+            margin-top: 100px;
+        }
+    
+        .scene {
+            width: 300px;
+            height: 300px;
+            margin: 75px auto 0;
+        }
+    
+        .cube {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform: perspective(1200px) translateZ(-150px);
+        }
+    
+        .side {
+            position: absolute;
+            width: 800px;
+            height: 300px;
+            box-sizing: border-box;
+            background-color: #999;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            padding: 120px 0;
+            font: 50px/1 'Trebuchet MS', sans-serif;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            transform-origin: 50% 50% -150px;
+            backface-visibility: hidden;
+        }
+    
+            .side::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.15);
+            }
+    
+            .side span {
+                position: relative;
+            }
+    
+        .guides {
+            position: absolute;
+            top: 0;
+            left: 50px;
+            width: 200px;
+            height: 100%;
+            border-style: dotted;
+            border-width: 0 1px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+    
+            .guides::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                width: 0;
+                height: 100%;
+                border-left: 1px dotted;
+            }*/
+    
+        .back {
+            transform: perspective(1200px) rotateX(0deg) rotateY(180deg);
+            animation: back 15s infinite linear;
+        }
+    
+        .top {
+            transform: perspective(1200px) rotateX(90deg);
+            animation: top 15s infinite linear;
+        }
+    
+        .bottom {
+            transform: perspective(1200px) rotateX(-90deg);
+            animation: bottom 15s infinite linear;
+        }
+    
+        .front {
+            transform: perspective(1200px) rotateX(0deg);
+            animation: front 15s infinite linear;
+        }
+    
+        .back {
+            background-image: url(https://askd.github.io/codepen/back.jpg);
+        }
+    
+        .top {
+            background-image: url(https://askd.github.io/codepen/top.jpg);
+        }
+    
+        .bottom {
+            background-image: url(https://askd.github.io/codepen/bottom.jpg);
+        }
+    
+        .front {
+            background-image: url(https://askd.github.io/codepen/front.jpg);
+        }
+    </style>
+    
+    <select class="form-control" id="VehicleType" name="VehicleType" onchange="getImages()">
+        <option value="">--- Please select ---</option>
+        <option value="bdc">Bakkie - Double Cab</option>
+        <option value="s">Sedan</option>
+    </select>
+    
+    <div class="separator"></div>
+    
+    <button id="button-left" onclick="toPassenger()">Driver</button>
+    <button id="button-front" onclick="toFront()">Front</button>
+    <button id="button-back" onclick="toBack()">Back</button>
+    <button id="button-right" onclick="toDriver()">Passenger</button>
+    <button id="button-top" onclick="toTop()">Top</button>
+    
+    <div class="separator"></div>
+    
+    <div id="repairSelection">
+        <div class="space3d">
+            <div class="_3dbox">
+                <div class="_3dface _3dface--front">
+                    <img class="img-fluid" id="front" />
+                </div>
+                <div class="_3dface _3dface--top">
+                    <img class="img-fluid" id="top" />
+                </div>
+    
+                <div class="_3dface _3dface--bottom">
+    
+                </div>
+    
+                <div class="_3dface _3dface--left">
+                    <img class="img-fluid" id="driver" />
+                </div>
+                <div class="_3dface _3dface--right">
+                    <img class="img-fluid" id="passenger" />
+                </div>
+    
+                <div class="_3dface _3dface--back">
+                    <img class="img-fluid" id="rear" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="separator"></div>
+    
+    
+    
+    
+    
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+    
+    
+    
+    <script type="text/javascript">
+    
+        function toPassenger() {
+            $('._3dbox').css('transform', 'rotateY(90deg)');
+        }
+        function toDriver() {
+            $('._3dbox').css('transform', 'rotateY(-90deg)');
+        }
+        function toFront() {
+            $('.front').css('transform', 'translate3d(0, 0, 0)');
+        }
+        function toBack() {
+            $('.back').css('transform', 'rotateY(180deg)');
+        }
+        function toTop() {
+            $('.top').css('transform', 'rotateX(-90deg)');
+        }
+    
+    
+    </script>
+    
+    
+    
+    <map name="bdc-driver-map" class="tasks">
+        <area class="task" part="Driver Rear Fender" href="javascript:void(0)" shape="poly" coords="28, 160, 456, 166, 455, 299, 430, 260, 403, 237, 374, 220, 331, 211, 264, 222, 232, 243, 200, 278, 179, 321, 174, 360, 39, 348, 38, 344, 63, 344, 63, 315, 23, 314, 20, 280, 66, 281, 73, 269, 58, 195, 42, 181, 19, 176" />
+        <area class="task" part="Driver Rear Door" href="javascript:void(0)" shape="poly" coords="484, 29, 483, 345, 686, 349, 689, 32" />
+        <area class="task" part="Driver Front Door" href="javascript:void(0)" shape="poly" coords="688, 32, 684, 353, 982, 353, 993, 253, 990, 161, 851, 55, 827, 40" />
+    </map>
+</body>
+</html>
